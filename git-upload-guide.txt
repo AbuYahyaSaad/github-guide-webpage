@@ -1,0 +1,109 @@
+# Git Installation and GitHub Upload Guide
+
+## Step 1: Install Git
+
+### For Windows:
+1. Download Git from: https://git-scm.com/download/windows
+2. Run the installer
+3. Use default settings (just keep clicking "Next")
+4. Important: When asked about "Adjusting your PATH environment", select "Git from the command line and also from 3rd-party software"
+
+### Verify Installation:
+Open Command Prompt (cmd) or PowerShell and type:
+```
+git --version
+```
+
+## Step 2: Configure Git
+
+Open Command Prompt/PowerShell and run these commands (replace with your info):
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+```
+
+## Step 3: Create Repository on GitHub
+
+1. Log in to GitHub
+2. Click the "+" icon in top right corner
+3. Select "New repository"
+4. Fill in:
+   - Repository name: `github-guide-webpage`
+   - Description: "Interactive GitHub learning guide"
+   - Keep it Public
+   - DON'T initialize with README (we already have one)
+5. Click "Create repository"
+
+## Step 4: Upload Your Files
+
+Navigate to your project folder and run these commands:
+
+```bash
+# 1. Navigate to your project directory
+cd C:\Users\MohammadSaad\GRIHA_april_project\Claude_agent\check
+
+# 2. Initialize Git in this folder
+git init
+
+# 3. Add all files to Git
+git add .
+
+# 4. Create your first commit
+git commit -m "Initial commit: GitHub guide webpage"
+
+# 5. Add your GitHub repository as remote (replace USERNAME with your GitHub username)
+git remote add origin https://github.com/USERNAME/github-guide-webpage.git
+
+# 6. Push your files to GitHub
+git push -u origin main
+```
+
+Note: If it says "master" instead of "main", use:
+```bash
+git branch -M main
+git push -u origin main
+```
+
+## Step 5: Enable GitHub Pages (Optional - to host your webpage)
+
+1. Go to your repository on GitHub
+2. Click "Settings" tab
+3. Scroll down to "Pages" section (left sidebar)
+4. Under "Source", select "Deploy from a branch"
+5. Select "main" branch and "/ (root)" folder
+6. Click "Save"
+7. Wait a few minutes, then visit: https://USERNAME.github.io/github-guide-webpage/
+
+## Troubleshooting
+
+### If you get authentication errors:
+1. GitHub now requires personal access tokens instead of passwords
+2. Go to: https://github.com/settings/tokens
+3. Click "Generate new token (classic)"
+4. Give it a name, select "repo" scope
+5. Generate and copy the token
+6. Use this token instead of your password when pushing
+
+### If push is rejected:
+```bash
+git pull origin main --allow-unrelated-histories
+git push origin main
+```
+
+## Quick Reference Commands
+
+```bash
+# Check status
+git status
+
+# View commit history
+git log --oneline
+
+# Add and commit changes
+git add .
+git commit -m "Your message"
+
+# Push changes
+git push
+```

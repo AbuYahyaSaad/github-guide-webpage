@@ -1,0 +1,83 @@
+# Code Quality Check
+name: Code Quality CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  # HTML Validation
+  validate-html:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Validate HTML
+        uses: Cyb3r-Jak3/html5validator-action@v7.2.0
+        with:
+          root: .
+          
+  # CSS Linting
+  lint-css:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          
+      - name: Install stylelint
+        run: npm install -g stylelint stylelint-config-standard
+        
+      - name: Lint CSS
+        run: stylelint "**/*.css" || true
+        
+  # JavaScript Linting
+  lint-js:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          
+      - name: Install ESLint
+        run: npm install -g eslint
+        
+      - name: Lint JavaScript
+        run: eslint "**/*.js" || true
+        
+  # Check for broken links
+  link-checker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Link Checker
+        uses: lycheeverse/lychee-action@v1.9.0
+        with:
+          fail: false
+          args: --verbose --no-progress './**/*.html'
+          
+  # Security scan
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Run security scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
