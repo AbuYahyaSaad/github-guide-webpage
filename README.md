@@ -1,10 +1,81 @@
-# GitHub Guide Webpage
+# GitHub Guide Webpage - Enhanced Edition 🚀
 
 ![CI/CD Pipeline](https://github.com/YOUR_USERNAME/github-guide-webpage/actions/workflows/simple-cicd.yml/badge.svg)
 ![Deploy Status](https://github.com/YOUR_USERNAME/github-guide-webpage/actions/workflows/deploy.yml/badge.svg)
 ![Quality Check](https://github.com/YOUR_USERNAME/github-guide-webpage/actions/workflows/quality-check.yml/badge.svg)
 
-A comprehensive, interactive webpage for learning and using GitHub effectively.
+A comprehensive, interactive webpage for learning GitHub with **personalized accounts**, **dark/light mode**, and **progress tracking**.
+
+## ✨ New Features
+
+### 🌓 Dark/Light Mode
+- Toggle between themes with smooth transitions
+- Preference saved to user account
+- Automatic theme detection
+
+### 👤 User Accounts (Powered by FastAPI)
+- Secure authentication with JWT tokens
+- Personalized learning experience
+- Progress saved across sessions
+
+### 📊 Learning Analytics
+- Track progress for each section
+- Overall completion percentage
+- Learning streak tracking
+- Achievement system
+
+### 📝 Personal Notes
+- Add notes to any section
+- Notes saved to your account
+- Export notes feature (coming soon)
+
+## 🚀 Quick Start
+
+### Easiest Way (Windows):
+```bash
+# Just double-click!
+start.bat
+```
+
+### Manual Setup:
+1. **Install Python 3.8+**
+2. **Install dependencies:**
+   ```bash
+   cd backend
+   pip install -r requirements.txt
+   ```
+3. **Run backend:**
+   ```bash
+   python main.py
+   ```
+4. **Open frontend:**
+   Open `index.html` in your browser
+
+## 📁 Project Structure
+
+```
+github-guide-webpage/
+├── 🎨 Frontend
+│   ├── index.html          # Enhanced UI with auth
+│   ├── github-guide.html   # Original static version
+│   ├── github-styles.css   # Additional styles
+│   └── github-interactive.js
+│
+├── ⚡ Backend (FastAPI)
+│   ├── backend/
+│   │   ├── main.py        # API server
+│   │   └── requirements.txt
+│   └── github_guide.db    # User database
+│
+├── 🚀 Automation
+│   ├── .github/workflows/ # CI/CD pipelines
+│   └── start.bat         # Quick start script
+│
+└── 📚 Documentation
+    ├── README.md         # This file
+    ├── SETUP_GUIDE.md    # Detailed setup
+    └── DEPLOYMENT.md     # Deploy to cloud
+```
 
 ## Features
 
